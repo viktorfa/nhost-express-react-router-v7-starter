@@ -1,0 +1,3 @@
+table:
+  name: subscriptions
+  schema: orgs

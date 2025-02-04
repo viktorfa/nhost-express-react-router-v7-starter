@@ -1,0 +1,24 @@
+table:
+  name: user_profiles
+  schema: orgs
+object_relationships:
+  - name: org_user
+    using:
+      foreign_key_constraint_on: current_org_user_id
+select_permissions:
+  - role: me
+    permission:
+      columns: []
+      filter:
+        current_org_user_id:
+          _eq: X-Hasura-Org-User-Id
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - current_org_user_id
+        - id
+        - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id

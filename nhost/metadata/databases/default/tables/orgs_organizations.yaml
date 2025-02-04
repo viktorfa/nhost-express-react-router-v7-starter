@@ -1,0 +1,16 @@
+table:
+  name: organizations
+  schema: orgs
+select_permissions:
+  - role: me
+    permission:
+      columns:
+        - created_at
+        - id
+        - owner_id
+        - title
+        - updated_at
+      filter:
+        id:
+          _in: X-Hasura-Org-Ids
+    comment: ""

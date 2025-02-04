@@ -1,0 +1,11 @@
+table:
+  name: constants
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns: []
+      filter:
+        key:
+          _eq: __cannot_be_a_key
+    comment: ""

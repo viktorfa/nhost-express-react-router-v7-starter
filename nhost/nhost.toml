@@ -1,0 +1,168 @@
+[global]
+[[global.environment]]
+name = 'DATABASE_URL'
+value = '{{ secrets.DATABASE_URL }}'
+
+[[global.environment]]
+name = 'SLS_FUNCTIONS_URL'
+value = '{{ secrets.SLS_FUNCTIONS_URL }}'
+
+[hasura]
+version = 'v2.44.0-ce'
+adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'
+webhookSecret = '{{ secrets.NHOST_WEBHOOK_SECRET }}'
+
+[[hasura.jwtSecrets]]
+type = 'HS256'
+key = '{{ secrets.HASURA_GRAPHQL_JWT_SECRET }}'
+
+[hasura.settings]
+corsDomain = ['*']
+devMode = true
+enableAllowList = false
+enableConsole = true
+enableRemoteSchemaPermissions = false
+enabledAPIs = ['metadata', 'graphql', 'pgdump', 'config']
+
+[hasura.logs]
+level = 'warn'
+
+[hasura.events]
+httpPoolSize = 2
+
+[functions]
+[functions.node]
+version = 18
+
+[auth]
+version = '0.37.0'
+
+[auth.redirections]
+clientUrl = 'https://mydomain.com'
+allowedUrls = ['https://mydomain.com']
+
+[auth.signUp]
+enabled = true
+
+[auth.user]
+[auth.user.roles]
+default = 'user_with_inherit'
+allowed = ['user', 'me', 'user_with_inherit']
+
+[auth.user.locale]
+default = 'en'
+allowed = ['en']
+
+[auth.user.gravatar]
+enabled = true
+default = 'blank'
+rating = 'g'
+
+[auth.user.email]
+
+[auth.user.emailDomains]
+
+[auth.session]
+[auth.session.accessToken]
+expiresIn = 900
+
+[[auth.session.accessToken.customClaims]]
+key = 'Org-Ids'
+value = 'org_users.org_id[]'
+
+[[auth.session.accessToken.customClaims]]
+key = 'Org-User-Id'
+value = 'user_profile.current_org_user_id'
+
+[[auth.session.accessToken.customClaims]]
+key = 'Org-Id'
+value = 'user_profile.org_user.org_id'
+
+[auth.session.refreshToken]
+expiresIn = 43200
+
+[auth.method]
+[auth.method.anonymous]
+enabled = false
+
+[auth.method.emailPasswordless]
+enabled = false
+
+[auth.method.emailPassword]
+hibpEnabled = false
+emailVerificationRequired = true
+passwordMinLength = 9
+
+[auth.method.smsPasswordless]
+enabled = false
+
+[auth.method.oauth]
+[auth.method.oauth.apple]
+enabled = false
+
+[auth.method.oauth.azuread]
+tenant = 'common'
+enabled = false
+
+[auth.method.oauth.bitbucket]
+enabled = false
+
+[auth.method.oauth.discord]
+enabled = false
+
+[auth.method.oauth.facebook]
+enabled = false
+
+[auth.method.oauth.github]
+enabled = false
+
+[auth.method.oauth.gitlab]
+enabled = false
+
+[auth.method.oauth.google]
+enabled = false
+
+[auth.method.oauth.linkedin]
+enabled = false
+
+[auth.method.oauth.spotify]
+enabled = false
+
+[auth.method.oauth.strava]
+enabled = false
+
+[auth.method.oauth.twitch]
+enabled = false
+
+[auth.method.oauth.twitter]
+enabled = false
+
+[auth.method.oauth.windowslive]
+enabled = false
+
+[auth.method.oauth.workos]
+enabled = false
+
+[auth.method.webauthn]
+enabled = false
+
+[auth.method.webauthn.attestation]
+timeout = 60000
+
+[auth.totp]
+enabled = false
+
+[postgres]
+version = '16.6-20250131-1'
+
+[postgres.resources]
+enablePublicAccess = true
+
+[provider]
+
+[storage]
+version = '0.6.1'
+
+[observability]
+[observability.grafana]
+adminPassword = '{{ secrets.GRAFANA_ADMIN_PASSWORD }}'

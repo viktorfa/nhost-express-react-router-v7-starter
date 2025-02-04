@@ -1,0 +1,2 @@
+DROP FUNCTION IF EXISTS gen_random_uuid_v7() CASCADE;
+
