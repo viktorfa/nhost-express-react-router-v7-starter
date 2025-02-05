@@ -16,3 +16,7 @@ storage/
 .pdm-python
 *.pyc
 __pycache__/
+
+.react-router/
+generated/
+build/
