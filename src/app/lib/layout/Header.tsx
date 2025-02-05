@@ -12,6 +12,9 @@ export const Header = () => {
             <Link to="/dashboard">Dashboard</Link>
           </div>
           <div>
+            <Link to="/dashboard/profile">Profile</Link>
+          </div>
+          <div>
             <Link to="/auth/sign-in">Sign In</Link>
           </div>
         </div>

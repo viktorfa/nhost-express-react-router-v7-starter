@@ -6,7 +6,10 @@ export default [
       route("auth/sign-in", "routes/auth/sign-in.tsx"),
       route("auth/sign-up", "routes/auth/sign-up.tsx"),
     ]),
-    layout("routes/dashboard/layout.tsx", [route("dashboard", "routes/dashboard/dashboard.tsx")]),
+    layout("routes/dashboard/layout.tsx", [
+      route("dashboard", "routes/dashboard/dashboard.tsx"),
+      route("dashboard/profile", "routes/dashboard/profile.tsx"),
+    ]),
     index("routes/home.tsx"),
   ]),
 ] satisfies RouteConfig;

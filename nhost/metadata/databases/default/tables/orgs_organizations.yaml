@@ -14,3 +14,13 @@ select_permissions:
         id:
           _in: X-Hasura-Org-Ids
     comment: ""
+update_permissions:
+  - role: me
+    permission:
+      columns:
+        - title
+      filter:
+        owner_id:
+          _eq: X-Hasura-User-Id
+      check: null
+    comment: ""
